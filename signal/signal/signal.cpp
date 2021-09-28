@@ -10,15 +10,12 @@ public:
     //generate new signal
     void generate(const size_t divisor)
     {
-         size_t i=0;//(*)
-        for(size_t y=0;y<size;y++)//walk around bytes
+        for(size_t y=0,i=0;y<size;y++,i++)//walk around bytes
         {
-             self[y]=0;//clear byte from trash
+            self[y]=0;//clear byte from trash
+            
             for(char x=0;x<8;x++)//walk around bits
-            {
                 if(!(i%divisor))self[y]|=1<<x;//set bit to true
-                i++;//(*)
-            }
         }
     }
 
