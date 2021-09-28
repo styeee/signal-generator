@@ -16,8 +16,7 @@ public:
              self[y]=0;//clear byte from trash
             for(char x=0;x<8;x++)//walk around bits
             {
-                if(i%divisor);else
-                self[y]|=1<<x;//set bit to true
+                if(!(i%divisor))self[y]|=1<<x;//set bit to true
                 i++;//(*)
             }
         }
@@ -26,12 +25,12 @@ public:
     //count - how many bytes // divisor - how many bits need to pass and -1
     signal(const size_t count,size_t divisor=0)    :size(count)
     {
-        self=new char[size];//create new bytes massiv
+        self=new char[size];//create new bytes array
         if(!divisor)return;//dont make div with 0! (but we can use it for make generation later)
         generate(divisor);//pull signal on it
     }
     ~signal()//if u want resize then delete and create new
-    {delete[]self;}//care abaout remove massive!
+    {delete[]self;}//care abaout remove array!
 
     void out()
     {
